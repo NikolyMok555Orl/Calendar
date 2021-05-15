@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use DateTime;
 
 /**
  * NoteController implements the CRUD actions for Note model.
@@ -64,10 +65,12 @@ class NoteController extends Controller
      */
     public function actionCreate($date)
     {
+        $date=new DateTime($date);
         $model = new Note();
-
+        $model->dateNote=$date->format('Y-m-d');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_note]);
+          //  return $this->redirect(['view', 'id' => $model->id_note]);
+            return $this->render('site\index');
         }
 
         return $this->render('create', [

@@ -29,15 +29,33 @@ use yii\data\ActiveDataProvider;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+        ['class' => 'yii\grid\SerialColumn'],
 
             //'id_note',
             //'dateNote',
             'header',
             'text',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+        'class' => 'yii\grid\ActionColumn',
+        'template' => '{view} {update} {delete}',
+        'buttons' => [
+        'view' => function ($url,$model) {
+            return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', ['note/view','id' => $model->id_note]);
+        },
+        'update' => function ($url,$model) {
+            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['note/update','id' => $model->id_note]);
+        },
+        'delete' => function ($url,$model) {
+            return Html::a('<span class="glyphicon glyphicon-trash"></span>', ['note/delete','id' => $model->id_note]);
+        },
+    ],
+],
+
+
         ],
+
+
     ]); ?>
 
 
