@@ -1,7 +1,7 @@
 <?php
 
-namespace app\components;
-use app\components\CalendarWidget;
+namespace app\components\calendar;
+use app\components\calendar\CalendarWidget;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\grid\GridView;
@@ -11,7 +11,7 @@ use DateTime;
 <?php $form = ActiveForm::begin(); ?>
 
 
-	<div>
+	<div class="calendar">
 
 		<p>
 			<?php $dateMonthLast=((new DateTime($date))->modify('-1 month'))->format('d.m.Y');

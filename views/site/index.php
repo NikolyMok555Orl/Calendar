@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 $this->title = 'Календарь';
-use app\components\CalendarWidget;
+use app\components\calendar\CalendarWidget;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\data\ActiveDataProvider;
@@ -13,10 +13,11 @@ use yii\data\ActiveDataProvider;
 
     <div class="body-content">
             <h1><?= Html::encode($this->title) ?></h1>
-           <?php echo CalendarWidget::widget(['date'=>$date]) 
+            <div>
+           <?php echo CalendarWidget::widget(['date'=>$date, 'dayWithNote'=>$dayWithNote]) 
             //echo $date->format('Y');
            ?>
-
+            </div>
             <div class="note-index">
 
 

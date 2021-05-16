@@ -70,11 +70,13 @@ class SiteController extends Controller
         else{$dateThis=new DateTime($dateThis); 
         }
 
+        $dayWithNote= Note::getDayWithNote($dateThis);
+        //echo  serialize($dayWithNote);
        $dataProvider = new ActiveDataProvider([
             'query' => Note::find()->where(['dateNote'=>($dateThis->format('Y-m-d'))]),
         ]);
 
-        return $this->render('index', ['date'=>$dateThis, 'dataProvider' => $dataProvider]);
+        return $this->render('index', ['date'=>$dateThis, 'dataProvider' => $dataProvider, 'dayWithNote'=>$dayWithNote]);
 
     }
 

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use Datetime;
 
 /**
  * This is the model class for table "note".
@@ -46,5 +47,20 @@ class Note extends \yii\db\ActiveRecord
             'header' => 'Заголовок',
             'text' => 'Основной текст',
         ];
+    }
+
+
+
+    public static function getDayWithNote(Datetime $date){
+
+
+        $notes =Note::find()->where(['between', 'dateNote', $date->format( 'Y-m-01'), $date->format( 'Y-m-t')])->all();
+
+        $noteList;
+         foreach ($notes as $note) {
+            $day=(new Datetime($note->dateNote))->format('d-m-Y');
+          $noteList[$day]= $day;
+        }
+        return $noteList;
     }
 }
