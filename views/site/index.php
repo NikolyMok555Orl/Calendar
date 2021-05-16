@@ -23,7 +23,7 @@ use yii\data\ActiveDataProvider;
 
 
     <p>
-        <?= Html::a('Create Note', ['note/create', 'date'=>$date->format('d-m-Y')], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Создать запись', ['note/create', 'date'=>$date->format('d-m-Y')], ['class' => 'btn btn-success']) ?>
     </p>
 
 
